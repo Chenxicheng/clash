@@ -1,0 +1,2247 @@
+# 混合端口 (HTTP & SOCKS5)
+mixed-port: 7890
+# 允许局域网连接
+allow-lan: true
+# 运行模式: Rule (规则模式), Global (全局模式), Direct (直连模式)
+mode: Rule
+# 日志级别: info, warning, error, debug, silent
+log-level: info
+# 外部控制端口 (用于 Web 面板)
+external-controller: :9090
+# 统一延迟 (对所有节点进行测速时使用统一的延迟计算方法)
+unified-delay: true
+# 实验性功能
+experimental:
+  # 忽略解析失败的域名
+  ignore-resolve-fail: true
+# Clash for Windows 延迟超时 (毫秒)
+cfw-latency-timeout: 8000
+# Clash for Windows 延迟测试地址
+cfw-latency-url: http://www.gstatic.com/generate_204
+# Clash for Windows 连接打断策略
+cfw-conn-break-strategy: true
+# 自定义域名解析 (本地映射)
+hosts: {}
+
+# DNS 配置
+dns:
+  # 是否启用系统外部 DNS
+  enable: true
+  # 监听地址
+  listen: 127.0.0.1:1053
+  # 是否开启 IPv6 解析
+  ipv6: true
+  # 默认 DNS 服务器 (用于解析 DNS 服务的域名)
+  default-nameserver:
+    - 114.114.114.114
+    - 223.5.5.5
+    - 119.29.29.29
+  # 假 IP 模式地址范围
+  fake-ip-range: 28.0.0.1/8
+  # 是否使用系统 hosts
+  use-hosts: true
+  # 增强模式: fake-ip (假 IP) 或 redir-host
+  enhanced-mode: fake-ip
+  # 假 IP 过滤列表
+  fake-ip-filter:
+    - "*.lan"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.home.arpa"
+    - time.*.com
+    - time.*.gov
+    - time.*.edu.cn
+    - time.*.apple.com
+    - time1.*.com
+    - time2.*.com
+    - time3.*.com
+    - time4.*.com
+    - time5.*.com
+    - time6.*.com
+    - time7.*.com
+    - ntp.*.com
+    - ntp1.*.com
+    - ntp2.*.com
+    - ntp3.*.com
+    - ntp4.*.com
+    - ntp5.*.com
+    - ntp6.*.com
+    - ntp7.*.com
+    - "*.time.edu.cn"
+    - "*.ntp.org.cn"
+    - "+.pool.ntp.org"
+    - time1.cloud.tencent.com
+    - music.163.com
+    - "*.music.163.com"
+    - "*.126.net"
+    - musicapi.taihe.com
+    - music.taihe.com
+    - songsearch.kugou.com
+    - trackercdn.kugou.com
+    - "*.kuwo.cn"
+    - api-jooxtt.sanook.com
+    - api.joox.com
+    - joox.com
+    - y.qq.com
+    - "*.y.qq.com"
+    - streamoc.music.tc.qq.com
+    - mobileoc.music.tc.qq.com
+    - isure.stream.qqmusic.qq.com
+    - dl.stream.qqmusic.qq.com
+    - aqqmusic.tc.qq.com
+    - amobile.music.tc.qq.com
+    - "*.xiami.com"
+    - "*.music.migu.cn"
+    - music.migu.cn
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - msftconnecttest.com
+    - msftncsi.com
+    - localhost.ptlogin2.qq.com
+    - localhost.sec.qq.com
+    - "+.srv.nintendo.net"
+    - "+.stun.playstation.net"
+    - xbox.*.microsoft.com
+    - xnotify.xboxmojie.app
+    - "+.ipv6.microsoft.com"
+    - "+.battlenet.com.cn"
+    - "+.wotgame.cn"
+    - "+.wggames.cn"
+    - "+.wowsgame.cn"
+    - "+.wargaming.net"
+    - proxy.golang.org
+    - stun.*.*
+    - stun.*.*.*
+    - "+.stun.*.*"
+    - "+.stun.*.*.*"
+    - "+.stun.*.*.*.*"
+    - heartbeat.belkin.com
+    - "*.linksys.com"
+    - "*.linksyssmartwifi.com"
+    - "*.router.asus.com"
+    - mesu.apple.com
+    - swscan.apple.com
+    - swquery.apple.com
+    - swdownload.apple.com
+    - swcdn.apple.com
+    - swdist.apple.com
+    - lens.l.google.com
+    - stun.l.google.com
+    - "*.square-enix.com"
+    - "*.finalfantasyxiv.com"
+    - "*.ffxiv.com"
+    - "*.ff14.sdo.com"
+    - ff.dorado.sdo.com
+    - "*.mcdn.bilivideo.cn"
+    - "+.media.dssott.com"
+    - "+.pvp.net"
+  # DNS 服务器列表
+  nameserver:
+    - tls://223.5.5.5:853
+    - tls://223.6.6.6:853
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
+# URL 重写(Stash)
+url-rewrite:
+  - ^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
+  - ^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 302
+
+# 代理节点
+proxies: []
+
+# 代理组配置
+proxy-groups:
+  # 🚀 节点选择: 手动选择节点或策略
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - DIRECT
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+  # 🚀 手动切换: 具体节点的列表
+  - name: 🚀 手动切换
+    type: select
+    proxies:
+      - DIRECT
+    use:
+      - all-proxies
+
+  # ♻️ 自动选择: 根据延迟自动选择最优节点
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - all-proxies
+
+  # 🇭🇰 Hong Kong: 自动筛选香港地区的节点
+  - name: 🇭🇰 Hong Kong
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇭🇰|香港|港|Hong Kong|\\bHK\\b)"
+
+  # 🇯🇵 Japan: 自动筛选日本地区的节点
+  - name: 🇯🇵 Japan
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇯🇵|日本|日|Japan|\\bJP\\b)"
+
+  # 🇺🇸 United States: 自动筛选美国地区的节点
+  - name: 🇺🇸 United States
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇺🇸|美国|美|United States|USA|America|\\bUS\\b)"
+
+  # 🇸🇬 Singapore: 自动筛选新加坡地区的节点
+  - name: 🇸🇬 Singapore
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇸🇬|新加坡|Singapore|\\bSG\\b)"
+
+  # 🇹🇼 Taiwan: 自动筛选台湾地区的节点
+  - name: 🇹🇼 Taiwan
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇹🇼|台湾|台|Taiwan|\\bTW\\b)"
+
+  # 🇰🇷 韩国: 自动筛选韩国地区的节点
+  - name: 🇰🇷 韩国
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇰🇷|韩国|韩|Korea|\\bKR\\b)"
+
+  # 🇬🇧 英国: 自动筛选英国地区的节点
+  - name: 🇬🇧 英国
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇬🇧|英国|英|United Kingdom|UK|Great Britain|\\bGB\\b)"
+
+  # 🇩🇪 德国: 自动筛选德国地区的节点
+  - name: 🇩🇪 德国
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇩🇪|德国|德|Germany|\\bDE\\b)"
+
+  # 🇫🇷 法国: 自动筛选法国地区的节点
+  - name: 🇫🇷 法国
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇫🇷|法国|法|France|\\bFR\\b)"
+
+  # 🇨🇦 加拿大: 自动筛选加拿大地区的节点
+  - name: 🇨🇦 加拿大
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇨🇦|加拿大|Canada|\\bCA\\b)"
+
+  # 🇻🇳 越南: 自动筛选越南地区的节点
+  - name: 🇻🇳 越南
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇻🇳|越南|Vietnam|\\bVN\\b)"
+
+  # 🇰🇭 柬埔寨: 自动筛选柬埔寨地区的节点
+  - name: 🇰🇭 柬埔寨
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇰🇭|柬埔寨|Cambodia|\\bKH\\b)"
+
+  # 🇲🇾 马来西亚: 自动筛选马来西亚地区的节点
+  - name: 🇲🇾 马来西亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇲🇾|马来西亚|Malaysia|\\bMY\\b)"
+
+  # 🇹🇭 泰国: 自动筛选泰国地区的节点
+  - name: 🇹🇭 泰国
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇹🇭|泰国|Thailand|\\bTH\\b)"
+
+  # 🇮🇳 印度: 自动筛选印度地区的节点
+  - name: 🇮🇳 印度
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇮🇳|印度|India|\\bIN\\b)"
+
+  # 🇧🇩 孟加拉: 自动筛选孟加拉地区的节点
+  - name: 🇧🇩 孟加拉
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇧🇩|孟加拉|Bangladesh|\\bBD\\b)"
+
+  # 🇳🇵 尼泊尔: 自动筛选尼泊尔地区的节点
+  - name: 🇳🇵 尼泊尔
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇳🇵|尼泊尔|Nepal|\\bNP\\b)"
+
+  # 🇵🇭 菲律宾: 自动筛选菲律宾地区的节点
+  - name: 🇵🇭 菲律宾
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇵🇭|菲律宾|Philippines|\\bPH\\b)"
+
+  # 🇮🇩 印度尼西亚: 自动筛选印度尼西亚地区的节点
+  - name: 🇮🇩 印度尼西亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇮🇩|印度尼西亚|Indonesia|\\bID\\b)"
+
+  # 🇦🇺 澳大利亚: 自动筛选澳大利亚地区的节点
+  - name: 🇦🇺 澳大利亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇦🇺|澳大利亚|Australia|\\bAU\\b)"
+
+  # 🇳🇿 新西兰: 自动筛选新西兰地区的节点
+  - name: 🇳🇿 新西兰
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇳🇿|新西兰|New Zealand|\\bNZ\\b)"
+
+  # 🇨🇭 瑞士: 自动筛选瑞士地区的节点
+  - name: 🇨🇭 瑞士
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇨🇭|瑞士|Switzerland|\\bCH\\b)"
+
+  # 🇮🇪 爱尔兰: 自动筛选爱尔兰地区的节点
+  - name: 🇮🇪 爱尔兰
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇮🇪|爱尔兰|Ireland|\\bIE\\b)"
+
+  # 🇮🇸 冰岛: 自动筛选冰岛地区的节点
+  - name: 🇮🇸 冰岛
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇮🇸|冰岛|Iceland|\\bIS\\b)"
+
+  # 🇵🇱 波兰: 自动筛选波兰地区的节点
+  - name: 🇵🇱 波兰
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇵🇱|波兰|Poland|\\bPL\\b)"
+
+  # 🇮🇹 意大利: 自动筛选意大利地区的节点
+  - name: 🇮🇹 意大利
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇮🇹|意大利|Italy|\\bIT\\b)"
+
+  # 🇪🇸 西班牙: 自动筛选西班牙地区的节点
+  - name: 🇪🇸 西班牙
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇪🇸|西班牙|Spain|\\bES\\b)"
+
+  # 🇳🇱 荷兰: 自动筛选荷兰地区的节点
+  - name: 🇳🇱 荷兰
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇳🇱|荷兰|Netherlands|Holland|\\bNL\\b)"
+
+  # 🇫🇮 芬兰: 自动筛选芬兰地区的节点
+  - name: 🇫🇮 芬兰
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇫🇮|芬兰|Finland|\\bFI\\b)"
+
+  # 🇦🇹 奥地利: 自动筛选奥地利地区的节点
+  - name: 🇦🇹 奥地利
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇦🇹|奥地利|Austria|\\bAT\\b)"
+
+  # 🇱🇹 立陶宛: 自动筛选立陶宛地区的节点
+  - name: 🇱🇹 立陶宛
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇱🇹|立陶宛|Lithuania|\\bLT\\b)"
+
+  # 🇸🇪 瑞典: 自动筛选瑞典地区的节点
+  - name: 🇸🇪 瑞典
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇸🇪|瑞典|Sweden|\\bSE\\b)"
+
+  # 🇬🇷 希腊: 自动筛选希腊地区的节点
+  - name: 🇬🇷 希腊
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇬🇷|希腊|Greece|\\bGR\\b)"
+
+  # 🇱🇻 拉脱维亚: 自动筛选拉脱维亚地区的节点
+  - name: 🇱🇻 拉脱维亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇱🇻|拉脱维亚|Latvia|\\bLV\\b)"
+
+  # 🇳🇴 挪威: 自动筛选挪威地区的节点
+  - name: 🇳🇴 挪威
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇳🇴|挪威|Norway|\\bNO\\b)"
+
+  # 🇩🇰 丹麦: 自动筛选丹麦地区的节点
+  - name: 🇩🇰 丹麦
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇩🇰|丹麦|Denmark|\\bDK\\b)"
+
+  # 🇧🇪 比利时: 自动筛选比利时地区的节点
+  - name: 🇧🇪 比利时
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇧🇪|比利时|Belgium|\\bBE\\b)"
+
+  # 🇱🇺 卢森堡: 自动筛选卢森堡地区的节点
+  - name: 🇱🇺 卢森堡
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇱🇺|卢森堡|Luxembourg|\\bLU\\b)"
+
+  # 🇲🇰 马其顿: 自动筛选马其顿地区的节点
+  - name: 🇲🇰 马其顿
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇲🇰|马其顿|Macedonia|North Macedonia|\\bMK\\b)"
+
+  # 🇦🇲 亚美尼亚: 自动筛选亚美尼亚地区的节点
+  - name: 🇦🇲 亚美尼亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇦🇲|亚美尼亚|Armenia|\\bAM\\b)"
+
+  # 🇦🇱 阿尔巴尼亚: 自动筛选阿尔巴尼亚地区的节点
+  - name: 🇦🇱 阿尔巴尼亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇦🇱|阿尔巴尼亚|Albania|\\bAL\\b)"
+
+  # 🇬🇪 格鲁吉亚: 自动筛选格鲁吉亚地区的节点
+  - name: 🇬🇪 格鲁吉亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇬🇪|格鲁吉亚|Georgia|\\bGE\\b)"
+
+  # 🇵🇹 葡萄牙: 自动筛选葡萄牙地区的节点
+  - name: 🇵🇹 葡萄牙
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇵🇹|葡萄牙|Portugal|\\bPT\\b)"
+
+  # 🇺🇦 乌克兰: 自动筛选乌克兰地区的节点
+  - name: 🇺🇦 乌克兰
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇺🇦|乌克兰|Ukraine|\\bUA\\b)"
+
+  # 🇲🇩 摩尔多瓦: 自动筛选摩尔多瓦地区的节点
+  - name: 🇲🇩 摩尔多瓦
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇲🇩|摩尔多瓦|Moldova|\\bMD\\b)"
+
+  # 🇪🇪 爱沙尼亚: 自动筛选爱沙尼亚地区的节点
+  - name: 🇪🇪 爱沙尼亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇪🇪|爱沙尼亚|Estonia|\\bEE\\b)"
+
+  # 🇭🇷 克罗地亚: 自动筛选克罗地亚地区的节点
+  - name: 🇭🇷 克罗地亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇭🇷|克罗地亚|Croatia|\\bHR\\b)"
+
+  # 🇸🇮 斯洛文尼亚: 自动筛选斯洛文尼亚地区的节点
+  - name: 🇸🇮 斯洛文尼亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇸🇮|斯洛文尼亚|Slovenia|\\bSI\\b)"
+
+  # 🇷🇴 罗马尼亚: 自动筛选罗马尼亚地区的节点
+  - name: 🇷🇴 罗马尼亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇷🇴|罗马尼亚|Romania|\\bRO\\b)"
+
+  # 🇸🇰 斯洛伐克: 自动筛选斯洛伐克地区的节点
+  - name: 🇸🇰 斯洛伐克
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇸🇰|斯洛伐克|Slovakia|\\bSK\\b)"
+
+  # 🇷🇺 俄罗斯: 自动筛选俄罗斯地区的节点
+  - name: 🇷🇺 俄罗斯
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇷🇺|俄罗斯|Russia|\\bRU\\b)"
+
+  # 🇧🇬 保加利亚: 自动筛选保加利亚地区的节点
+  - name: 🇧🇬 保加利亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇧🇬|保加利亚|Bulgaria|\\bBG\\b)"
+
+  # 🇹🇷 土耳其: 自动筛选土耳其地区的节点
+  - name: 🇹🇷 土耳其
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇹🇷|土耳其|Turkey|\\bTR\\b)"
+
+  # 🇷🇸 塞尔维亚: 自动筛选塞尔维亚地区的节点
+  - name: 🇷🇸 塞尔维亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇷🇸|塞尔维亚|Serbia|\\bRS\\b)"
+
+  # 🇪🇬 埃及: 自动筛选埃及地区的节点
+  - name: 🇪🇬 埃及
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇪🇬|埃及|Egypt|\\bEG\\b)"
+
+  # 🇦🇴 安哥拉: 自动筛选安哥拉地区的节点
+  - name: 🇦🇴 安哥拉
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇦🇴|安哥拉|Angola|\\bAO\\b)"
+
+  # 🇳🇬 尼日利亚: 自动筛选尼日利亚地区的节点
+  - name: 🇳🇬 尼日利亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇳🇬|尼日利亚|Nigeria|\\bNG\\b)"
+
+  # 🇲🇦 摩洛哥: 自动筛选摩洛哥地区的节点
+  - name: 🇲🇦 摩洛哥
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇲🇦|摩洛哥|Morocco|\\bMA\\b)"
+
+  # 🇿🇦 南非: 自动筛选南非地区的节点
+  - name: 🇿🇦 南非
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇿🇦|南非|South Africa|\\bZA\\b)"
+
+  # 🇸🇦 沙特阿拉伯: 自动筛选沙特阿拉伯地区的节点
+  - name: 🇸🇦 沙特阿拉伯
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇸🇦|沙特阿拉伯|Saudi Arabia|\\bSA\\b)"
+
+  # 🇮🇶 伊拉克: 自动筛选伊拉克地区的节点
+  - name: 🇮🇶 伊拉克
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇮🇶|伊拉克|Iraq|\\bIQ\\b)"
+
+  # 🇮🇱 以色列: 自动筛选以色列地区的节点
+  - name: 🇮🇱 以色列
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇮🇱|以色列|Israel|\\bIL\\b)"
+
+  # 🇨🇾 塞浦路斯: 自动筛选塞浦路斯地区的节点
+  - name: 🇨🇾 塞浦路斯
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇨🇾|塞浦路斯|Cyprus|\\bCY\\b)"
+
+  # 🇴🇲 阿曼: 自动筛选阿曼地区的节点
+  - name: 🇴🇲 阿曼
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇴🇲|阿曼|Oman|\\bOM\\b)"
+
+  # 🇦🇪 阿拉伯联合酋长国: 自动筛选阿拉伯联合酋长国地区的节点
+  - name: 🇦🇪 阿拉伯联合酋长国
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇦🇪|阿拉伯联合酋长国|United Arab Emirates|UAE|\\bAE\\b)"
+
+  # 🇶🇦 卡塔尔: 自动筛选卡塔尔地区的节点
+  - name: 🇶🇦 卡塔尔
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇶🇦|卡塔尔|Qatar|\\bQA\\b)"
+
+  # 🇵🇰 巴基斯坦: 自动筛选巴基斯坦地区的节点
+  - name: 🇵🇰 巴基斯坦
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇵🇰|巴基斯坦|Pakistan|\\bPK\\b)"
+
+  # 🇺🇿 乌兹别克斯坦: 自动筛选乌兹别克斯坦地区的节点
+  - name: 🇺🇿 乌兹别克斯坦
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇺🇿|乌兹别克斯坦|Uzbekistan|\\bUZ\\b)"
+
+  # 🇰🇿 哈萨克斯坦: 自动筛选哈萨克斯坦地区的节点
+  - name: 🇰🇿 哈萨克斯坦
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇰🇿|哈萨克斯坦|Kazakhstan|\\bKZ\\b)"
+
+  # 🇦🇷 阿根廷: 自动筛选阿根廷地区的节点
+  - name: 🇦🇷 阿根廷
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇦🇷|阿根廷|Argentina|\\bAR\\b)"
+
+  # 🇵🇪 秘鲁: 自动筛选秘鲁地区的节点
+  - name: 🇵🇪 秘鲁
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇵🇪|秘鲁|Peru|\\bPE\\b)"
+
+  # 🇨🇴 哥伦比亚: 自动筛选哥伦比亚地区的节点
+  - name: 🇨🇴 哥伦比亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇨🇴|哥伦比亚|Colombia|\\bCO\\b)"
+
+  # 🇬🇹 危地马拉: 自动筛选危地马拉地区的节点
+  - name: 🇬🇹 危地马拉
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇬🇹|危地马拉|Guatemala|\\bGT\\b)"
+
+  # 🇪🇨 厄瓜多尔: 自动筛选厄瓜多尔地区的节点
+  - name: 🇪🇨 厄瓜多尔
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇪🇨|厄瓜多尔|Ecuador|\\bEC\\b)"
+
+  # 🇨🇷 哥斯达黎加: 自动筛选哥斯达黎加地区的节点
+  - name: 🇨🇷 哥斯达黎加
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇨🇷|哥斯达黎加|Costa Rica|\\bCR\\b)"
+
+  # 🇲🇽 墨西哥: 自动筛选墨西哥地区的节点
+  - name: 🇲🇽 墨西哥
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇲🇽|墨西哥|Mexico|\\bMX\\b)"
+
+  # 🇨🇱 智利: 自动筛选智利地区的节点
+  - name: 🇨🇱 智利
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇨🇱|智利|Chile|\\bCL\\b)"
+
+  # 🇧🇴 玻利维亚: 自动筛选玻利维亚地区的节点
+  - name: 🇧🇴 玻利维亚
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇧🇴|玻利维亚|Bolivia|\\bBO\\b)"
+
+  # 🇺🇾 乌拉圭: 自动筛选乌拉圭地区的节点
+  - name: 🇺🇾 乌拉圭
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇺🇾|乌拉圭|Uruguay|\\bUY\\b)"
+
+  # 🇧🇷 巴西: 自动筛选巴西地区的节点
+  - name: 🇧🇷 巴西
+    type: select
+    use:
+      - all-proxies
+    filter: "(?i)(🇧🇷|巴西|Brazil|\\bBR\\b)"
+
+  # 🌍 Other Regions: 自动筛选主要地区以外的所有节点
+  - name: 🌍 Other Regions
+    type: select
+    use:
+      - all-proxies
+    filter: "^(?!.*((?i)香港|港|Hong Kong|\bHK\b|日本|日|Japan|\bJP\b|美国|美|United States|USA|America|\bUS\b|新加坡|Singapore|\bSG\b|台湾|台|Taiwan|\bTW\b|🇨🇦|加拿大|Canada|\bCA\b|🇰🇷|韩国|Korea|\bKR\b|🇻🇳|越南|Vietnam|\bVN\b|🇰🇭|柬埔寨|Cambodia|\bKH\b|🇲🇾|马来西亚|Malaysia|\bMY\b|🇹🇭|泰国|Thailand|\bTH\b|🇮🇳|印度|India|\bIN\b|🇧🇩|孟加拉|Bangladesh|\bBD\b|🇳🇵|尼泊尔|Nepal|\bNP\b|🇵🇭|菲律宾|Philippines|\bPH\b|🇮🇩|印度尼西亚|Indonesia|\bID\b|🇦🇺|澳大利亚|Australia|\bAU\b|🇳🇿|新西兰|New Zealand|\bNZ\b|🇩🇪|德国|Germany|\bDE\b|🇫🇷|法国|France|\bFR\b|🇨🇭|瑞士|Switzerland|\bCH\b|🇬🇧|英国|United Kingdom|UK|Great Britain|\bGB\b|🇮🇪|爱尔兰|Ireland|\bIE\b|🇮🇸|冰岛|Iceland|\bIS\b|🇵🇱|波兰|Poland|\bPL\b|🇮🇹|意大利|Italy|\bIT\b|🇪🇸|西班牙|Spain|\bES\b|🇳🇱|荷兰|Netherlands|Holland|\bNL\b|🇫🇮|芬兰|Finland|\bFI\b|🇦🇹|奥地利|Austria|\bAT\b|🇱🇹|立陶宛|Lithuania|\bLT\b|🇸🇪|瑞典|Sweden|\bSE\b|🇬🇷|希腊|Greece|\bGR\b|🇱🇻|拉脱维亚|Latvia|\bLV\b|🇳🇴|挪威|Norway|\bNO\b|🇩🇰|丹麦|Denmark|\bDK\b|🇧🇪|比利时|Belgium|\bBE\b|🇱🇺|卢森堡|Luxembourg|\bLU\b|🇲🇰|马其顿|Macedonia|North Macedonia|\bMK\b|🇦🇲|亚美尼亚|Armenia|\bAM\b|🇦🇱|阿尔巴尼亚|Albania|\bAL\b|🇬🇪|格鲁吉亚|Georgia|\bGE\b|🇵🇹|葡萄牙|Portugal|\bPT\b|🇺🇦|乌克兰|Ukraine|\bUA\b|🇲🇩|摩尔多瓦|Moldova|\bMD\b|🇪🇪|爱沙尼亚|Estonia|\bEE\b|🇭🇷|克罗地亚|Croatia|\bHR\b|🇸🇮|斯洛文尼亚|Slovenia|\bSI\b|🇷🇴|罗马尼亚|Romania|\bRO\b|🇸🇰|斯洛伐克|Slovakia|\bSK\b|🇷🇺|俄罗斯|Russia|\bRU\b|🇧🇬|保加利亚|Bulgaria|\bBG\b|🇹🇷|土耳其|Turkey|\bTR\b|🇷🇸|塞尔维亚|Serbia|\bRS\b|🇪🇬|埃及|Egypt|\bEG\b|🇦🇴|安哥拉|Angola|\bAO\b|🇳🇬|尼日利亚|Nigeria|\bNG\b|🇲🇦|摩洛哥|Morocco|\bMA\b|🇿🇦|南非|South Africa|\bZA\b|🇸🇦|沙特阿拉伯|Saudi Arabia|\bSA\b|🇮🇶|伊拉克|Iraq|\bIQ\b|🇮🇱|以色列|Israel|\bIL\b|🇨🇾|塞浦路斯|Cyprus|\bCY\b|🇴🇲|阿曼|Oman|\bOM\b|🇦🇪|阿拉伯联合酋长国|United Arab Emirates|UAE|\bAE\b|🇶🇦|卡塔尔|Qatar|\bQA\b|🇵🇰|巴基斯坦|Pakistan|\bPK\b|🇺🇿|乌兹别克斯坦|Uzbekistan|\bUZ\b|🇰🇿|哈萨克斯坦|Kazakhstan|\bKZ\b|🇦🇷|阿根廷|Argentina|\bAR\b|🇵🇪|秘鲁|Peru|\bPE\b|🇨🇴|哥伦比亚|Colombia|\bCO\b|🇬🇹|危地马拉|Guatemala|\bGT\b|🇪🇨|厄瓜多尔|Ecuador|\bEC\b|🇨🇷|哥斯达黎加|Costa Rica|\bCR\b|🇲🇽|墨西哥|Mexico|\bMX\b|🇨🇱|智利|Chile|\bCL\b|🇧🇴|玻利维亚|Bolivia|\bBO\b|🇺🇾|乌拉圭|Uruguay|\bUY\b|🇧🇷|巴西|Brazil|\bBR\b)).*$"
+
+  # 🌐 国际流量: 处理未命中的国际网站流量
+  - name: 🌐 国际流量
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+  
+
+  # 🎯 国内流量: 处理已知国内网站的直连或代理策略
+  - name: 🎯 国内流量
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+
+  # 🚫 国内广告: 拦截国内应用内的广告
+  - name: 🚫 国内广告
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🚀 节点选择
+
+  # 🚫 国外广告: 拦截国外应用或网页广告
+  - name: 🚫 国外广告
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+      - 🚀 节点选择
+
+  # 🤖 AI服务: 针对 ChatGPT, Claude, Gemini 等 AI 服务的策略
+  - name: 🤖 AI服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # 📹 YouTube: YouTube 专用优化策略
+  - name: 📹 YouTube
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # Ⓜ️ 微软服务: 微软 Office, Outlook, OneDrive 等服务策略
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # 🔍 谷歌服务: Google 搜索、地图及其他非 YouTube 谷歌服务
+  - name: 🔍 谷歌服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # 📧 Google FCM: 谷歌推送通知服务策略
+  - name: 📧 Google FCM
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # 🍎 Apple服务: App Store, iCloud, Apple Music 等苹果服务
+  - name: 🍎 Apple服务
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # 🌍 国外媒体: 其他未分类的国际视频/音乐流媒体
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+      - DIRECT
+    use:
+      - all-proxies
+
+  # ✈️ Telegram: Telegram 聊天应用专用策略
+  - name: ✈️ Telegram
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # Ⓜ️ Microsoft: 微软综合服务策略
+  - name: Ⓜ️ Microsoft
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🚀 手动切换
+      - 🇭🇰 Hong Kong
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇹🇼 Taiwan
+      - 🇨🇦 加拿大
+      - 🇰🇷 韩国
+      - 🇻🇳 越南
+      - 🇰🇭 柬埔寨
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+      - 🇮🇳 印度
+      - 🇧🇩 孟加拉
+      - 🇳🇵 尼泊尔
+      - 🇵🇭 菲律宾
+      - 🇮🇩 印度尼西亚
+      - 🇦🇺 澳大利亚
+      - 🇳🇿 新西兰
+      - 🇩🇪 德国
+      - 🇫🇷 法国
+      - 🇨🇭 瑞士
+      - 🇬🇧 英国
+      - 🇮🇪 爱尔兰
+      - 🇮🇸 冰岛
+      - 🇵🇱 波兰
+      - 🇮🇹 意大利
+      - 🇪🇸 西班牙
+      - 🇳🇱 荷兰
+      - 🇫🇮 芬兰
+      - 🇦🇹 奥地利
+      - 🇱🇹 立陶宛
+      - 🇸🇪 瑞典
+      - 🇬🇷 希腊
+      - 🇱🇻 拉脱维亚
+      - 🇳🇴 挪威
+      - 🇩🇰 丹麦
+      - 🇧🇪 比利时
+      - 🇱🇺 卢森堡
+      - 🇲🇰 马其顿
+      - 🇦🇲 亚美尼亚
+      - 🇦🇱 阿尔巴尼亚
+      - 🇬🇪 格鲁吉亚
+      - 🇵🇹 葡萄牙
+      - 🇺🇦 乌克兰
+      - 🇲🇩 摩尔多瓦
+      - 🇪🇪 爱沙尼亚
+      - 🇭🇷 克罗地亚
+      - 🇸🇮 斯洛文尼亚
+      - 🇷🇴 罗马尼亚
+      - 🇸🇰 斯洛伐克
+      - 🇷🇺 俄罗斯
+      - 🇧🇬 保加利亚
+      - 🇹🇷 土耳其
+      - 🇷🇸 塞尔维亚
+      - 🇪🇬 埃及
+      - 🇦🇴 安哥拉
+      - 🇳🇬 尼日利亚
+      - 🇲🇦 摩洛哥
+      - 🇿🇦 南非
+      - 🇸🇦 沙特阿拉伯
+      - 🇮🇶 伊拉克
+      - 🇮🇱 以色列
+      - 🇨🇾 塞浦路斯
+      - 🇴🇲 阿曼
+      - 🇦🇪 阿拉伯联合酋长国
+      - 🇶🇦 卡塔尔
+      - 🇵🇰 巴基斯坦
+      - 🇺🇿 乌兹别克斯坦
+      - 🇰🇿 哈萨克斯坦
+      - 🇦🇷 阿根廷
+      - 🇵🇪 秘鲁
+      - 🇨🇴 哥伦比亚
+      - 🇬🇹 危地马拉
+      - 🇪🇨 厄瓜多尔
+      - 🇨🇷 哥斯达黎加
+      - 🇲🇽 墨西哥
+      - 🇨🇱 智利
+      - 🇧🇴 玻利维亚
+      - 🇺🇾 乌拉圭
+      - 🇧🇷 巴西
+      - 🌍 Other Regions
+
+
+  # 🫧 WeChat: 微信特殊处理(通常建议直连)
+  - name: 🫧 WeChat
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - 🚀 手动切换
+
+# 代理提供者 (订阅源)
+proxy-providers:
+  all-proxies:
+    type: http
+    url: "https://example.com/your-subscription-url"
+    interval: 3600
+    path: ./providers/all-proxies.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+# 分流规则
+rules:
+  - RULE-SET,AdBlock,🚫 国外广告
+  - RULE-SET,HTTPDNS,🚫 国外广告
+  - RULE-SET,Special,DIRECT
+  - RULE-SET,AI Suite,🤖 AI服务
+  - RULE-SET,Netflix,🌍 国外媒体
+  - RULE-SET,Disney Plus,🌍 国外媒体
+  - RULE-SET,YouTube,📹 YouTube
+  - RULE-SET,Max,🌍 国外媒体
+  - RULE-SET,Spotify,🌍 国外媒体
+  - RULE-SET,Bilibili,🎯 国内流量
+  - RULE-SET,IQ,🎯 国内流量
+  - RULE-SET,IQIYI,🎯 国内流量
+  - RULE-SET,Letv,🎯 国内流量
+  - RULE-SET,Netease Music,🎯 国内流量
+  - RULE-SET,Tencent Video,🎯 国内流量
+  - RULE-SET,WeTV,🎯 国内流量
+  - RULE-SET,Youku,🎯 国内流量
+  - RULE-SET,Abema TV,🌍 国外媒体
+  - RULE-SET,Bahamut,🌍 国外媒体
+  - RULE-SET,DMM,🌍 国外媒体
+  - RULE-SET,Fox+,🌍 国外媒体
+  - RULE-SET,Hulu Japan,🌍 国外媒体
+  - RULE-SET,Japonx,🌍 国外媒体
+  - RULE-SET,JOOX,🌍 国外媒体
+  - RULE-SET,KKBOX,🌍 国外媒体
+  - RULE-SET,KKTV,🌍 国外媒体
+  - RULE-SET,Line TV,🌍 国外媒体
+  - RULE-SET,myTV SUPER,🌍 国外媒体
+  - RULE-SET,Niconico,🌍 国外媒体
+  - RULE-SET,ViuTV,🌍 国外媒体
+  - RULE-SET,ABC,🌍 国外媒体
+  - RULE-SET,Amazon,🌍 国外媒体
+  - RULE-SET,BBC iPlayer,🌍 国外媒体
+  - RULE-SET,DAZN,🌍 国外媒体
+  - RULE-SET,Discovery Plus,🌍 国外媒体
+  - RULE-SET,encoreTVB,🌍 国外媒体
+  - RULE-SET,F1 TV,🌍 国外媒体
+  - RULE-SET,Fox Now,🌍 国外媒体
+  - RULE-SET,Hulu,🌍 国外媒体
+  - RULE-SET,Pandora,🌍 国外媒体
+  - RULE-SET,PBS,🌍 国外媒体
+  - RULE-SET,Pornhub,🌍 国外媒体
+  - RULE-SET,Soundcloud,🌍 国外媒体
+  - RULE-SET,Telegram,✈️ Telegram
+  - RULE-SET,Crypto,🌐 国际流量
+  - RULE-SET,Discord,🌐 国际流量
+  - RULE-SET,Google FCM,📧 Google FCM
+  - RULE-SET,Google,🔍 谷歌服务
+  - RULE-SET,Google Drive,🔍 谷歌服务
+  - RULE-SET,YouTube Music,📹 YouTube
+  - RULE-SET,Google Search,🔍 谷歌服务
+  - RULE-SET,Microsoft,Ⓜ️ Microsoft
+  - RULE-SET,PayPal,🌐 国际流量
+  - RULE-SET,Scholar,🔍 谷歌服务
+  - RULE-SET,Speedtest,🌐 国际流量
+  - RULE-SET,Steam,🌐 国际流量
+  - RULE-SET,TikTok,🌐 国际流量
+  - RULE-SET,Apple Music,🍎 Apple服务
+  - RULE-SET,Apple News,🍎 Apple服务
+  - RULE-SET,Apple TV,🍎 Apple服务
+  - RULE-SET,Apple,🍎 Apple服务
+  - RULE-SET,miHoYo,🎯 国内流量
+  - RULE-SET,PROXY,🌐 国际流量
+  - RULE-SET,Domestic,🎯 国内流量
+  - RULE-SET,Domestic IPs,🎯 国内流量
+  - RULE-SET,LAN,DIRECT
+  - GEOIP,CN,🎯 国内流量
+  - MATCH,🌐 国际流量
+
+# 规则提供者
+rule-providers:
+  AdBlock:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/AdBlock.yaml'
+    path: ./Rules/AdBlock
+    interval: 604800
+  HTTPDNS:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/HTTPDNS.yaml'
+    path: ./Rules/HTTPDNS
+    interval: 604800
+  Special:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Special.yaml'
+    path: ./Rules/Special
+    interval: 604800
+  PROXY:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Proxy.yaml'
+    path: ./Rules/Proxy
+    interval: 604800
+  Domestic:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Domestic.yaml'
+    path: ./Rules/Domestic
+    interval: 604800
+  Domestic IPs:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Domestic%20IPs.yaml'
+    path: ./Rules/Domestic_IPs
+    interval: 604800
+  LAN:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/LAN.yaml'
+    path: ./Rules/LAN
+    interval: 604800
+  Netflix:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Netflix.yaml'
+    path: ./Rules/Media/Netflix
+    interval: 604800
+  Spotify:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Spotify.yaml'
+    path: ./Rules/Media/Spotify
+    interval: 604800
+  YouTube:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/YouTube.yaml'
+    path: ./Rules/Media/YouTube
+    interval: 604800
+  Max:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Max.yaml'
+    path: ./Rules/Media/Max
+    interval: 604800
+  Bilibili:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Bilibili.yaml'
+    path: ./Rules/Media/Bilibili
+    interval: 604800
+  IQ:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/IQ.yaml'
+    path: ./Rules/Media/IQI
+    interval: 604800
+  IQIYI:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/IQIYI.yaml'
+    path: ./Rules/Media/IQYI
+    interval: 604800
+  Letv:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Letv.yaml'
+    path: ./Rules/Media/Letv
+    interval: 604800
+  Netease Music:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Netease%20Music.yaml'
+    path: ./Rules/Media/Netease_Music
+    interval: 604800
+  Tencent Video:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Tencent%20Video.yaml'
+    path: ./Rules/Media/Tencent_Video
+    interval: 604800
+  Youku:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Youku.yaml'
+    path: ./Rules/Media/Youku
+    interval: 604800
+  WeTV:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/WeTV.yaml'
+    path: ./Rules/Media/WeTV
+    interval: 604800
+  ABC:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/ABC.yaml'
+    path: ./Rules/Media/ABC
+    interval: 604800
+  Abema TV:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Abema%20TV.yaml'
+    path: ./Rules/Media/Abema_TV
+    interval: 604800
+  Amazon:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Amazon.yaml'
+    path: ./Rules/Media/Amazon
+    interval: 604800
+  Apple Music:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20Music.yaml'
+    path: ./Rules/Media/Apple_Music
+    interval: 604800
+  Apple News:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20News.yaml'
+    path: ./Rules/Media/Apple_News
+    interval: 604800
+  Apple TV:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Apple%20TV.yaml'
+    path: ./Rules/Media/Apple_TV
+    interval: 604800
+  Bahamut:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Bahamut.yaml'
+    path: ./Rules/Media/Bahamut
+    interval: 604800
+  BBC iPlayer:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/BBC%20iPlayer.yaml'
+    path: ./Rules/Media/BBC_iPlayer
+    interval: 604800
+  DAZN:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/DAZN.yaml'
+    path: ./Rules/Media/DAZN
+    interval: 604800
+  Discovery Plus:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Discovery%20Plus.yaml'
+    path: ./Rules/Media/Discovery_Plus
+    interval: 604800
+  Disney Plus:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Disney%20Plus.yaml'
+    path: ./Rules/Media/Disney_Plus
+    interval: 604800
+  DMM:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/DMM.yaml'
+    path: ./Rules/Media/DMM
+    interval: 604800
+  encoreTVB:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/encoreTVB.yaml'
+    path: ./Rules/Media/encoreTVB
+    interval: 604800
+  F1 TV:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/F1%20TV.yaml'
+    path: ./Rules/Media/F1_TV
+    interval: 604800
+  Fox Now:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Fox%20Now.yaml'
+    path: ./Rules/Media/Fox_Now
+    interval: 604800
+  Fox+:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Fox%2B.yaml'
+    path: ./Rules/Media/Fox+
+    interval: 604800
+  Hulu Japan:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Hulu%20Japan.yaml'
+    path: ./Rules/Media/Hulu_Japan
+    interval: 604800
+  Hulu:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Hulu.yaml'
+    path: ./Rules/Media/Hulu
+    interval: 604800
+  Japonx:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Japonx.yaml'
+    path: ./Rules/Media/Japonx
+    interval: 604800
+  JOOX:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/JOOX.yaml'
+    path: ./Rules/Media/JOOX
+    interval: 604800
+  KKBOX:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/KKBOX.yaml'
+    path: ./Rules/Media/KKBOX
+    interval: 604800
+  KKTV:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/KKTV.yaml'
+    path: ./Rules/Media/KKTV
+    interval: 604800
+  Line TV:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Line%20TV.yaml'
+    path: ./Rules/Media/Line_TV
+    interval: 604800
+  myTV SUPER:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/myTV%20SUPER.yaml'
+    path: ./Rules/Media/myTV_SUPER
+    interval: 604800
+  Niconico:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Niconico.yaml'
+    path: ./Rules/Media/Niconico
+    interval: 604800
+  Pandora:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Pandora.yaml'
+    path: ./Rules/Media/Pandora
+    interval: 604800
+  PBS:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/PBS.yaml'
+    path: ./Rules/Media/PBS
+    interval: 604800
+  Pornhub:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Pornhub.yaml'
+    path: ./Rules/Media/Pornhub
+    interval: 604800
+  Soundcloud:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/Soundcloud.yaml'
+    path: ./Rules/Media/Soundcloud
+    interval: 604800
+  ViuTV:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Media/ViuTV.yaml'
+    path: ./Rules/Media/ViuTV
+    interval: 604800
+  Telegram:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Telegram.yaml'
+    path: ./Rules/Telegram
+    interval: 604800
+  Crypto:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Crypto.yaml'
+    path: ./Rules/Crypto
+    interval: 604800
+  Discord:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Discord.yaml'
+    path: ./Rules/Discord
+    interval: 604800
+  Steam:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Steam.yaml'
+    path: ./Rules/Steam
+    interval: 604800
+  TikTok:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/TikTok.yaml'
+    path: ./Rules/TikTok
+    interval: 604800
+  Speedtest:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Speedtest.yaml'
+    path: ./Rules/Speedtest
+    interval: 604800
+  PayPal:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/PayPal.yaml'
+    path: ./Rules/PayPal
+    interval: 604800
+  Microsoft:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Microsoft.yaml'
+    path: ./Rules/Microsoft
+    interval: 604800
+  AI Suite:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/AI%20Suite.yaml'
+    path: ./Rules/AI Suite
+    interval: 604800
+  Apple:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Apple.yaml'
+    path: ./Rules/Apple
+    interval: 604800
+  Google FCM:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Google%20FCM.yaml'
+    path: ./Rules/Google FCM
+    interval: 604800
+  Google:
+    type: http
+    behavior: classical
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml'
+    path: ./Rules/Google
+    interval: 604800
+  Google Drive:
+    type: http
+    behavior: classical
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleDrive/GoogleDrive.yaml'
+    path: ./Rules/GoogleDrive
+    interval: 604800
+  YouTube Music:
+    type: http
+    behavior: classical
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTubeMusic/YouTubeMusic.yaml'
+    path: ./Rules/YouTubeMusic
+    interval: 604800
+  Google Search:
+    type: http
+    behavior: classical
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleSearch/GoogleSearch.yaml'
+    path: ./Rules/GoogleSearch
+    interval: 604800
+  Scholar:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/Scholar.yaml'
+    path: ./Rules/Scholar
+    interval: 604800
+  miHoYo:
+    type: http
+    behavior: classical
+    url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/miHoYo.yaml'
+    path: ./Rules/miHoYo
+    interval: 604800
