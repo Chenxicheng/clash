@@ -264,35 +264,50 @@ proxy-groups:
 
   # 🇭🇰 Hong Kong: 自动筛选香港地区的节点
   - name: 🇭🇰 Hong Kong
-    type: select
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
     use:
       - all-proxies
     filter: "(?i)(🇭🇰|香港|港|Hong Kong|\\bHK\\b)"
 
   # 🇯🇵 Japan: 自动筛选日本地区的节点
   - name: 🇯🇵 Japan
-    type: select
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
     use:
       - all-proxies
     filter: "(?i)(🇯🇵|日本|日|Japan|\\bJP\\b)"
 
   # 🇺🇸 United States: 自动筛选美国地区的节点
   - name: 🇺🇸 United States
-    type: select
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
     use:
       - all-proxies
     filter: "(?i)(🇺🇸|美国|美|United States|USA|America|\\bUS\\b)"
 
   # 🇸🇬 Singapore: 自动筛选新加坡地区的节点
   - name: 🇸🇬 Singapore
-    type: select
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
     use:
       - all-proxies
     filter: "(?i)(🇸🇬|新加坡|Singapore|\\bSG\\b)"
 
   # 🇹🇼 Taiwan: 自动筛选台湾地区的节点
   - name: 🇹🇼 Taiwan
-    type: select
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
     use:
       - all-proxies
     filter: "(?i)(🇹🇼|台湾|台|Taiwan|\\bTW\\b)"
