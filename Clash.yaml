@@ -3,7 +3,7 @@ mixed-port: 7890
 # 允许局域网连接
 allow-lan: true
 # 运行模式: Rule (规则模式), Global (全局模式), Direct (直连模式)
-mode: Rule
+mode: rule
 # 日志级别: info, warning, error, debug, silent
 log-level: info
 # 外部控制端口 (用于 Web 面板)
@@ -1783,7 +1783,7 @@ proxy-groups:
 proxy-providers:
   all-proxies:
     type: http
-    url: "https://example.com/your-subscription-url"
+    url: "https://os82xt1aa8.qinyues4.cc/0f554ca2181d9648a22086db46ab2817"
     interval: 3600
     path: ./providers/all-proxies.yaml
     health-check:
