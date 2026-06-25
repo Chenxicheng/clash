@@ -23,6 +23,12 @@ cfw-conn-break-strategy: true
 # 自定义域名解析 (本地映射)
 hosts: {}
 
+# TUN 配置
+tun:
+  route-exclude-address:
+    - 6.6.6.6/32
+    - 2000::6666/128
+
 # DNS 配置
 dns:
   # 是否启用系统外部 DNS
@@ -145,6 +151,10 @@ dns:
     - tls://223.6.6.6:853
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
+  # 始终返回真实 IP 的域名
+  always-real-ip:
+    - "*.heiyu.space"
+    - "*.lazycat.cloud"
 
 # URL 重写(Stash)
 url-rewrite:
@@ -1793,6 +1803,10 @@ proxy-providers:
 
 # 分流规则
 rules:
+  - 'DOMAIN-SUFFIX,heiyu.space,DIRECT'
+  - 'DOMAIN-SUFFIX,lazycat.cloud,DIRECT'
+  - 'DOMAIN-SUFFIX,*.lazycat.cloud,DIRECT'
+  - 'DOMAIN-SUFFIX,*.lazycatmicroserver.com,DIRECT'
   - RULE-SET,AdBlock,🚫 国外广告
   - RULE-SET,HTTPDNS,🚫 国外广告
   - RULE-SET,Special,DIRECT
