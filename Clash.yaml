@@ -1793,7 +1793,7 @@ proxy-groups:
 proxy-providers:
   all-proxies:
     type: http
-    url: "https://os82xt1aa8.qinyues4.cc/0f554ca2181d9648a22086db46ab2817"
+    url: "<订阅地址>"
     interval: 3600
     path: ./providers/all-proxies.yaml
     health-check:
