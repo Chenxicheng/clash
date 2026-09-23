@@ -980,6 +980,26 @@ proxy-groups:
       - DIRECT
       - 🚀 节点选择
 
+  # 🎵 字节跳动: 字节跳动服务固定直连
+  - name: 🎵 字节跳动
+    type: select
+    proxies:
+      - DIRECT
+
+  # 🐙 GitHub: GitHub 服务的地区选择
+  - name: 🐙 GitHub
+    type: select
+    proxies:
+      - 🇭🇰 Hong Kong
+      - 🇹🇼 Taiwan
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🇸🇬 Singapore
+      - 🇰🇷 韩国
+      - 🇵🇭 菲律宾
+      - 🇲🇾 马来西亚
+      - 🇹🇭 泰国
+
   # 🤖 AI服务: 针对 ChatGPT, Claude, Gemini 等 AI 服务的策略
   - name: 🤖 AI服务
     type: select
@@ -1810,6 +1830,8 @@ rules:
   - RULE-SET,AdBlock,🚫 国外广告
   - RULE-SET,HTTPDNS,🚫 国外广告
   - RULE-SET,Special,DIRECT
+  - RULE-SET,ByteDance,🎵 字节跳动
+  - RULE-SET,GitHub,🐙 GitHub
   - RULE-SET,AI Suite,🤖 AI服务
   - RULE-SET,Netflix,🌍 国外媒体
   - RULE-SET,Disney Plus,🌍 国外媒体
@@ -2225,6 +2247,18 @@ rule-providers:
     behavior: classical
     url: 'https://testingcf.jsdelivr.net/gh/dler-io/Rules@main/Clash/Provider/AI%20Suite.yaml'
     path: ./Rules/AI Suite
+    interval: 604800
+  ByteDance:
+    type: http
+    behavior: classical
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ByteDance/ByteDance.yaml'
+    path: ./Rules/ByteDance
+    interval: 604800
+  GitHub:
+    type: http
+    behavior: classical
+    url: 'https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub.yaml'
+    path: ./Rules/GitHub
     interval: 604800
   Apple:
     type: http
