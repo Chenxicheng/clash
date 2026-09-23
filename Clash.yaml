@@ -1,3 +1,15 @@
+# 代理提供者 (订阅源) — 每次拉取更新后, 先在此填入订阅地址再使用
+proxy-providers:
+  all-proxies:
+    type: http
+    url: "<订阅地址>"
+    interval: 3600
+    path: ./providers/all-proxies.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
 # 混合端口 (HTTP & SOCKS5)
 mixed-port: 7890
 # 允许局域网连接
@@ -1788,18 +1800,6 @@ proxy-groups:
       - DIRECT
       - 🚀 节点选择
       - 🚀 手动切换
-
-# 代理提供者 (订阅源)
-proxy-providers:
-  all-proxies:
-    type: http
-    url: "<订阅地址>"
-    interval: 3600
-    path: ./providers/all-proxies.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
 
 # 分流规则
 rules:
